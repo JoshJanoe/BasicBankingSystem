@@ -6,13 +6,18 @@ package BankingApplication;
 import java.util.Scanner;
 
 /**
- * @author Josh
+ * @author Josh Janoe
+ * @version 1
+ * 
+ * Basic banking application account functionality
+ * Allows user to intereact with program to
+ * deposit, withdraw, check balance, etc
  *
  */
 public class BankAccount {
 	
 	int balance;
-	int prevTransaction;
+	int prevTransactionAmount;
 	String custName;
 	String custID;
 	
@@ -25,15 +30,17 @@ public class BankAccount {
 		custID = id;
 	}
 
+	//adds money to account in the amount of the int "amount"
 	public void deposit(int amount) {
 		if (amount > 0) {
 			balance += amount;
-			prevTransaction = amount;
+			prevTransactionAmount = amount;
 			System.out.println("You're deposit for $"+amount+" is complete.  "
 							+ "\nYou're new account balance is: $"+balance);
 		}
 	}
 	
+	//removes money from account in the amount of the int "amount"
 	public void withdraw(int amount) {
 		//if amount > balance, do not allow
 		if (amount > balance) {
@@ -43,25 +50,27 @@ public class BankAccount {
 		//if amount is greater than 0 withdraw amount, and balance > amount
 		if (amount > 0 && balance > amount) {
 			balance -= amount;
-			prevTransaction = -amount;
+			prevTransactionAmount = -amount;
 			System.out.println("You're withdraw for $"+amount+" is complete.  "
 					+ "\nYou're new account balance is: $"+balance);
 		}		
 	}
 	
+	//prints previous transaction details to the console
 	public void getPrevTransaction() {
 		System.out.print("Your last transaction was a ");
-		if (prevTransaction > 0) {
-			System.out.println("DEPOSIT in the amount of: $"+prevTransaction);
+		if (prevTransactionAmount > 0) {
+			System.out.println("DEPOSIT in the amount of: $"+prevTransactionAmount);
 		}
-		else if (prevTransaction < 0) {
-			System.out.println("WITHDRAW in the amount of: $"+Math.abs(prevTransaction));
+		else if (prevTransactionAmount < 0) {
+			System.out.println("WITHDRAW in the amount of: $"+Math.abs(prevTransactionAmount));
 		}
 		else {
 			System.out.println("No previous transactions recorded");
 		}
 	}
 	
+	//prints a home screen with basic data and menu for customer to interact with
 	public void showMenu() {
 		System.out.println("Welcome " + custName);
 		System.out.println("Your ID is " + custID);
@@ -69,11 +78,13 @@ public class BankAccount {
 		menuOptions();		
 	}
 	
+	//provides the user with several options to input for account transactions
 	private void menuOptions() {
 		
 		String option = "";
 		Scanner scanner = new Scanner(System.in);
 		
+		//basic menu listing
 		System.out.println("");
 		System.out.print("A. Check Balance");
 		System.out.println("\tB. Deposit");
@@ -86,6 +97,7 @@ public class BankAccount {
 		System.out.println("======================================");
 		option = scanner.next().toUpperCase();
 		
+		//if x, they perform the appropriate function/method
 		if (option.equals("A")) {
 			System.out.println("--------------------------------------");
 			System.out.println("Your balance is: $"+balance);
@@ -122,7 +134,8 @@ public class BankAccount {
 			System.out.println("**************************************");
 			System.out.println("Thank You for using our services.  Goodbye!");
 		}
-			
+		
+		//if none of the designated options is selected prompt to try again
 		if (option.equals("[^ABCDE]")) {
 			System.out.println("Invalid option. Please try again\n\n");
 			menuOptions();				
@@ -130,6 +143,14 @@ public class BankAccount {
 		
 	}
 	
+	/*
+	 * Basic getters and setters.  
+	 * 
+	 * Not much use as is, 
+	 * but should provide function
+	 * as the program expands.
+	 * 
+	 */
 	public int getBalance() {
 		return balance;
 	}
@@ -142,8 +163,16 @@ public class BankAccount {
 		return custID;
 	}
 	
+	private void setCustName(String name) {
+		custName = name;
+	}
+	
+	private void setCustID(String id) {
+		custID = id;
+	}
+	
 	/**
-	 * 
+	 * standard main method
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
