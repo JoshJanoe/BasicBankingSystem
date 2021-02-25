@@ -11,12 +11,13 @@ like Deposit, Withdraw, Check Balance
  * Basic banking application created using online tutorial by Help People on YouTube
  * Tutorial can be found at https://www.youtube.com/watch?v=wQbEH4tVMJA&feature=emb_logo
  * 
- * The above description lists previous and future changes.
+ * The below description lists previous and future changes.
+ * Original code can be found in the file "BankingApplicationV0"
  *
  */
  
  /**
- * The following application has been heavily modified from the base code
+ * The following application has been modified from the base code
  * found in the above described tutorial.  Listed are some of the changes.
  * 
  * -Variables and sample names changed for clarity
