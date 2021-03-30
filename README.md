@@ -27,7 +27,8 @@ like Deposit, Withdraw, Check Balance
  * To add:
  * -password
  * -array of recent transactions/session report
- * -graphical interface
+ * -GUI using Swing
  * -split BankAccount class into Account and Transaction classes??
+ * -utilize SQL to store/retrieve information
  * 
  */
